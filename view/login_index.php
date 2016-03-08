@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
+<meta charset="UTF-8">
 <link rel="stylesheet" href="view/css/login_style.css">
  <link href="view/css/bootstrap.min.css" rel="stylesheet">
 <title>Kochtopf - Login</title>
@@ -17,7 +18,7 @@
 				</br>
 				</br>
 				<button type="submit" class="btn btn-success">Login</button>
-				<button type="button" class="btn btn-default">Registrieren</button>
+				<a href="User/" class="btn btn-default">Registrieren</a>
 			</form>
 	</div>
 </body>

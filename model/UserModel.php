@@ -44,7 +44,7 @@ class UserModel extends Model
     
     public function readByUsername($benutzername){
     	// Query erstellen
-        $query = "SELECT passwort FROM $this->tableName WHERE benutzername=?";
+        $query = "SELECT * FROM $this->tableName WHERE benutzername=?";
 
         // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
         // und die Parameter "binden"

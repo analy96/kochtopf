@@ -47,15 +47,23 @@ class DefaultController
     public function login(){
     	$user = new UserModel();
     	$user->table = 'benutzer';
-    	$password = $user->readByUsername($_POST['name']);
+    	$userinfo = $user->readByUsername($_POST['name']);
     	
-    	if($password->passwort == $_POST['passwort']){
-    		$_SESSION['benutzername'] = $_POST['name'];
+    	if($userinfo->passwort == $_POST['passwort']){
+    		settion_start();
+    		$_SESSION['benutzer_id'] = $userinfo->benutzername;
     		header('location: /home');
-    		//echo "Erfolgreich eingeloggt!!";
     	}else{
     		echo "Passwort falsch";
     	}
+    }
+    
+    
+    public function index_registrieren(){
+    	$view = new View('registrieren_index');
+    	$view->title = 'Login';
+    	$view->heading = 'registrieren';
+    	$view->display();
     }
 	
 }

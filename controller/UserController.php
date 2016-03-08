@@ -11,10 +11,9 @@ class UserController
     {
         $userModel = new UserModel();
 
-        $view = new View('user_index');
-        $view->title = 'Benutzer';
-        $view->heading = 'Benutzer';
-        $view->users = $userModel->readAll();
+        $view = new View('registrieren_index');
+        $view->title = 'Login';
+        $view->heading = 'registrieren';
         $view->display();
     }
 
