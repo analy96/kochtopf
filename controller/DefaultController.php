@@ -1,5 +1,7 @@
 <?php
 
+require_once 'model/UserModel.php';
+
 /**
  * Der Controller ist der Ort an dem es für jede Seite, welche der Benutzer
  * anfordern kann eine Methode gibt, welche die dazugehörende Businesslogik
@@ -36,9 +38,24 @@ class DefaultController
         // In diesem Fall möchten wir dem Benutzer die View mit dem Namen
         //   "default_index" rendern. Wie das genau funktioniert, ist in der
         //   View Klasse beschrieben.
-        $view = new View('default_index');
-        $view->title = 'Startseite';
-        $view->heading = 'Startseite';
+        $view = new View('login_index');
+        $view->title = 'Login';
+        $view->heading = 'Login';
         $view->display();
     }
+    
+    public function login(){
+    	$user = new UserModel();
+    	$user->table = 'benutzer';
+    	$password = $user->readByUsername($_POST['name']);
+    	
+    	if($password->passwort == $_POST['passwort']){
+    		$_SESSION['benutzername'] = $_POST['name'];
+    		header('location: /home');
+    		//echo "Erfolgreich eingeloggt!!";
+    	}else{
+    		echo "Passwort falsch";
+    	}
+    }
+	
 }

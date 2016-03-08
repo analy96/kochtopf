@@ -81,9 +81,15 @@ class View
     public function display()
     {
         extract($this->properties);
+		
 
-        require './view/header.php';
-        require $this->viewfile;
-        require './view/footer.php';
+		if($title == "Login"){
+			require $this->viewfile;
+		}else{
+			require './view/header.php';
+			require $this->viewfile;
+			require './view/footer.php';
+		}
+        
     }
 }

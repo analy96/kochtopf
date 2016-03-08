@@ -38,16 +38,16 @@ class Dispatcher
 
         // Den Namen des gewünschten Controllers ermitteln
         $controllerName = 'DefaultController';
-        if (!empty($uriFragments[0])) {
-            $controllerName = $uriFragments[0];
+        if (!empty($uriFragments[1])) {
+            $controllerName = $uriFragments[1];
             $controllerName = ucfirst($controllerName); // Erstes Zeichen grossschreiben
             $controllerName .= 'Controller'; // "Controller" anhängen
         }
 
         // Den Namen der auszuführenden Methode ermitteln
         $method = 'index';
-        if (!empty($uriFragments[1])) {
-            $method = $uriFragments[1];
+        if (!empty($uriFragments[2])) {
+            $method = $uriFragments[2];
         }
 
         $args = array_slice($uriFragments, 2);

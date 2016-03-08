@@ -13,7 +13,7 @@ class UserModel extends Model
      * Diese Variable wird von der Klasse Model verwendet, um generische
      * Funktionen zur Verfügung zu stellen.
      */
-    protected $tableName = 'user';
+    protected $tableName = 'benutzer';
 
     /**
      * Erstellt einen neuen benutzer mit den gegebenen Werten.
@@ -28,17 +28,45 @@ class UserModel extends Model
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
-    public function create($firstName, $lastName, $email, $password)
+    public function create($benutzername, $vorname, $nachname, $email, $jahre_alt, $geschlecht, $passwort)
     {
         $password = sha1($password);
 
-        $query = "INSERT INTO $this->tableName (firstName, lastName, email, password) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO $this->tableName (benutzername, vorname, nachname, email, jahre_alt, geschlecht, passwort) VALUES (?, ?, ?, ?,?,?,?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssss', $firstName, $lastName, $email, $password);
+        $statement->bind_param('ssssiss', $benutzername,$vorname,$nachname,$email,$jahre_alt,$geschlecht,$password);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
+    }
+    
+    public function readByUsername($benutzername){
+    	// Query erstellen
+        $query = "SELECT passwort FROM $this->tableName WHERE benutzername=?";
+
+        // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
+        // und die Parameter "binden"
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $benutzername);
+
+        // Das Statement absetzen
+        $statement->execute();
+
+        // Resultat der Abfrage holen
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+        // Ersten Datensatz aus dem Reultat holen
+        $row = $result->fetch_object();
+
+        // Datenbankressourcen wieder freigeben
+        $result->close();
+
+        // Den gefundenen Datensatz zurückgeben
+        return $row;
     }
 }
