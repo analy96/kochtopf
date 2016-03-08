@@ -3,39 +3,39 @@
 require_once 'model/UserModel.php';
 
 /**
- * Der Controller ist der Ort an dem es für jede Seite, welche der Benutzer
- * anfordern kann eine Methode gibt, welche die dazugehörende Businesslogik
+ * Der Controller ist der Ort an dem es fÃ¼r jede Seite, welche der Benutzer
+ * anfordern kann eine Methode gibt, welche die dazugehÃ¶rende Businesslogik
  * beherbergt.
  *
  * Welche Controller und Funktionen muss ich erstellen?
- *   Es macht sinn, zusammengehörende Funktionen (z.B: User anzeigen, erstellen,
- *   bearbeiten & löschen) gemeinsam in einem passend benannten Controller (z.B:
- *   UserController) zu implementieren. Nicht zusammengehörende Features sollten
+ *   Es macht sinn, zusammengehÃ¶rende Funktionen (z.B: User anzeigen, erstellen,
+ *   bearbeiten & lÃ¶schen) gemeinsam in einem passend benannten Controller (z.B:
+ *   UserController) zu implementieren. Nicht zusammengehÃ¶rende Features sollten
  *   jeweils auf unterschiedliche Controller aufgeteilt werden.
  *
  * Was passiert in einer Controllerfunktion?
  *   Die Anforderungen an die einzelnen Funktionen sind sehr unterschiedlich.
- *   Folgend die gängigsten:
- *     - Dafür sorgen, dass dem Benutzer eine View (HTML, CSS & JavaScript)
+ *   Folgend die gÃ¤ngigsten:
+ *     - DafÃ¼r sorgen, dass dem Benutzer eine View (HTML, CSS & JavaScript)
  *         gesendet wird.
- *     - Daten von einem Model (Verbindungsstück zur Datenbank) anfordern und
- *         der View übergeben, damit diese Daten dann für den Benutzer in HTML
- *         Code umgewandelt werden können.
+ *     - Daten von einem Model (VerbindungsstÃ¼ck zur Datenbank) anfordern und
+ *         der View Ã¼bergeben, damit diese Daten dann fÃ¼r den Benutzer in HTML
+ *         Code umgewandelt werden kÃ¶nnen.
  *     - Daten welche z.B. von einem Formular kommen validieren und dem Model
- *         übergeben, damit sie in der Datenbank persistiert werden können.
+ *         Ã¼bergeben, damit sie in der Datenbank persistiert werden kÃ¶nnen.
  */
 class DefaultController
 {
     /**
      * Die index Funktion des DefaultControllers sollte in jedem Projekt
-     * existieren, da diese ausgeführt wird, falls die URI des Requests leer
+     * existieren, da diese ausgefÃ¼hrt wird, falls die URI des Requests leer
      * ist. (z.B. http://mvc.local/). Weshalb das so ist, ist und wann welchr
      * Controller und welche Methode aufgerufen wird, ist im Dispatcher
      * beschrieben.
      */
     public function index()
     {
-        // In diesem Fall möchten wir dem Benutzer die View mit dem Namen
+        // In diesem Fall mÃ¶chten wir dem Benutzer die View mit dem Namen
         //   "default_index" rendern. Wie das genau funktioniert, ist in der
         //   View Klasse beschrieben.
         $view = new View('login_index');
@@ -50,7 +50,7 @@ class DefaultController
     	$userinfo = $user->readByUsername($_POST['name']);
     	
     	if($userinfo->passwort == $_POST['passwort']){
-    		settion_start();
+    		session_start();
     		$_SESSION['benutzer_id'] = $userinfo->benutzername;
     		header('location: /home');
     	}else{
@@ -58,12 +58,5 @@ class DefaultController
     	}
     }
     
-    
-    public function index_registrieren(){
-    	$view = new View('registrieren_index');
-    	$view->title = 'Login';
-    	$view->heading = 'registrieren';
-    	$view->display();
-    }
 	
 }
