@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="css/style.css">
- <link href="css/bootstrap.min.css" rel="stylesheet">
-<title>Kochtopf - Login</title>
-</head>
-<body>
-	<div class="main">
-			<form action="php/login.php" method="get">
-				<h3>Login</h3>
-				<p>Username</p>
-				<input type="text" class="form-control" placeholder="Username">
-				</br>
-				<p>Passwort</p>
-				<input type="password" class="form-control" placeholder="Username">
-				
-				</br>
-			</form>
-	</div>
-</body>
-</html>
+<?php
+
+/*
+ * Die index.php Datei ist der Einstiegspunkt des MVC. Hier werden zuerst alle
+ * vom Framework benötigten Klassen geladen und danach wird die Anfrage dem
+ * Dispatcher weitergegeben.
+ *
+ * Wie in der .htaccess Datei beschrieben, werden alle Anfragen, welche nicht
+ * auf eine bestehende Datei zeigen hierhin umgeleitet.
+ */
+
+require_once 'lib/Dispatcher.php';
+require_once 'lib/View.php';
+require_once 'lib/Model.php';
+
+$dispatcher = new Dispatcher();
+$dispatcher->dispatch();
