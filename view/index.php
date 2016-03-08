@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="css/style.css">
  <link href="css/bootstrap.min.css" rel="stylesheet">
+ <link href="css/style.css" rel="stylesheet">
 <title>Kochtopf - Login</title>
 </head>
 <body>

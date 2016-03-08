@@ -1,0 +1,36 @@
+#inhalt{   
+    overflow-y: scroll;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 85px;
+    margin-bottom: 80px;
+}
+#container-aussen{
+    padding: 0;
+    width: 90%;
+    height: 90%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    margin: auto; 
+}
+.glyphicon-user{
+    font-size: 500%;
+    float: left;
+    margin-top:20px;
+}
+.glyphicon-home{
+    font-size: 500%;
+    float: left;
+    margin-top: 120px;
+    margin-left:-73px;
+
+}
+.glyphicon-remove-circle{
+    font-size: 500%;
+    float: left;
+    margin-top: 230px;
+    margin-left: -73px;
+}
