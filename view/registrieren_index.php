@@ -4,12 +4,19 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../view/css/login_style.css">
  <link href="../view/css/bootstrap.min.css" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <title>Kochtopf - Registrieren</title>
 
 	
 <script type="text/javascript">
 function validate(){
-	return false;
+	var jqxhr = $.ajax( "../model/UserModel.php" )
+	  .done(checkUsername(document.getElementsByTagName("benutzername").value) {
+	    alert( "success" );
+	    return false;
+	  })
+}
+}
 </script>
 </head>
 <body>
@@ -17,7 +24,7 @@ function validate(){
 			<form action="User/" method="post" onsubmit="return validate()" name="form">
 				<h3>Registration</h3>
 				<p>Benutzername</p>
-				<input name="benutzername" type="text" class="form-control" placeholder="Benutzername">
+				<input name="benutzername" type="text" class="form-control" placeholder="Benutzername" required="required">
 				</br>
 				<p>Vorname</p>
 				<input name="vorname" type="text" class="form-control" placeholder="Vorname" required="required">
