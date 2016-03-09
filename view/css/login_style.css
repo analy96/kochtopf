@@ -19,6 +19,8 @@ body{
 	background-attachment: fixed;
 }
 
+
+
 .main_r{
 	
     width: 500px;
@@ -33,4 +35,13 @@ body{
     left: 0;
     position: absolute;
     margin: auto;
+}
+
+.validation_ok{
+	background-color: #9EFFB0;
+}
+
+
+.validation_nok{
+	background-color: #FF8080;
 }
