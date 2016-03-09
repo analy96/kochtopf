@@ -96,8 +96,8 @@ $("form").submit(function(event){
 				<input name="alter" type="number" class="form-control" placeholder="Alter" required="required">
 				</br>
 				<p>Geschlecht</p>
-				<label class="radio-inline"><input type="radio" name="alter">Männlich</label>
-				<label class="radio-inline"><input type="radio" name="alter">Weblich</label>
+				<label class="radio-inline"><input type="radio" name="geschlecht">Männlich</label>
+				<label class="radio-inline"><input type="radio" name="geschlecht">Weblich</label>
 				</br>
 				</br>
 				<p>Passwort</p>

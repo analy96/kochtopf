@@ -30,20 +30,20 @@ class UserModel extends Model
      */
     public function create($benutzername, $vorname, $nachname, $email, $jahre_alt, $geschlecht, $passwort)
     {
-        $password = sha1($password);
+        $password = sha1($passwort);
 
         $query = "INSERT INTO $this->tableName (benutzername, vorname, nachname, email, jahre_alt, geschlecht, passwort) VALUES (?, ?, ?, ?,?,?,?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssssiss', $benutzername,$vorname,$nachname,$email,$jahre_alt,$geschlecht,$password);
+        $statement->bind_param('ssssiss', $benutzername,$vorname,$nachname,$email,$jahre_alt,$geschlecht,$passwort);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
         
-        $session_start();
-        $user = readByUsername($_POST['benutzername']);
-        $_SESSION['userid'] = $user['id'];
+        session_start();
+        $user = $this->readByUsername($_POST['benutzername']);
+        $_SESSION['userid'] = $user->id;
     }
     
     public function readByUsername($benutzername){

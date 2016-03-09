@@ -1,6 +1,6 @@
 <?php
 
-require_once 'model/UserModel.php';
+require_once __DIR__.'/../model/UserModel.php';
 
 /**
  * Der Controller ist der Ort an dem es fÃ¼r jede Seite, welche der Benutzer
@@ -44,17 +44,16 @@ class DefaultController
         $view->display();
     }
     
-    public function login(){
+    public function login($benutzername){
     	$user = new UserModel();
     	$user->table = 'benutzer';
-    	$userinfo = $user->readByUsername($_POST['name']);
+    	$userinfo = $user->readByUsername($benutzername);
+    	$passwort = sha1($userinfo->passwort);
     	
-    	if($userinfo->passwort == $_POST['passwort']){
-    		session_start();
-    		$_SESSION['userid'] = $userinfo->id;
-    		header('location: /home');
+    	if($passwort == $_POST['passwort']){
+    		return true;
     	}else{
-    		echo "Passwort falsch";
+    		return false;
     	}
     }
     

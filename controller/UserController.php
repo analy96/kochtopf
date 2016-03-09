@@ -27,19 +27,20 @@ class UserController
 
     public function doCreate()
     {
-        if ($_POST['send']) {
             $benutzername = $_POST['benutzername'];
             $vorname = $_POST['vorname'];
             $nachname = $_POST['nachname'];
             $email = $_POST['email'];
             $alter = $_POST['alter'];
-            $geschlecht = $_POST['geschlecht'];
-            $passwort = $_POST['password'];
+            $geschlecht = 'm';//$_POST['geschlecht'];
+            $passwort = $_POST['passwort'];
 
             $userModel = new UserModel();
             $userModel->create($benutzername, $vorname, $nachname, $email, $alter, $geschlecht, $passwort);
-        }
-
+        
+		
+        echo $_SESSION['userid'];
+        echo $_POST['geschlecht'];
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /home');
     }
