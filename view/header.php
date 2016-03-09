@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-    <heamd>
-        <link rel="stylesheet" href="css/style.css">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+    <head>
+        <link rel="stylesheet" href="./view/css/style.css">
+        <link href="./view/css/bootstrap.min.css" rel="stylesheet">
         <title>Kochtopf</title>
     </head>
     <body>
@@ -15,7 +15,6 @@
             <a href="#">
                 <span class="glyphicon glyphicon-remove-circle"></span>
             </a>
-            <div id="inhalt" class="container-fluid">
                 
                 
                 

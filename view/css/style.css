@@ -2,8 +2,9 @@
     overflow-y: scroll;
     margin-left: auto;
     margin-right: 20px;
-    margin-top: 85px;
+    margin-top: 28px;
     margin-bottom: 80px;
+    border: 1px solid green;
 }
 #container-aussen{
     padding: 0;
@@ -15,6 +16,7 @@
     left: 0;
     position: absolute;
     margin: auto; 
+    border: 1px solid blue;
 }
 .glyphicon-user{
     font-size: 500%;
@@ -33,4 +35,30 @@
     float: left;
     margin-top: 230px;
     margin-left: -73px;
+}
+#aussen-zelle{
+    border: 1px solid black;
+    height: 140px;
+}
+#innere-zelle{
+    border: 1px solid red;
+    height: 100px;
+    overflow: hidden;
+    padding-left: 0;
+}
+#anzeige-button{
+    float: right;
+}
+#suchfeld{
+    top: 20px;
+    right: 0;
+    left: 0;
+    position: absolute;
+    margin: auto; 
+}
+#dropdown-liste{
+    float: right;
+}
+#kategorie-button{
+    margin-top: 57px;
 }
