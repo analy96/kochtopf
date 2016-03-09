@@ -2,6 +2,7 @@
 
 require_once 'model/RezeptModel.php';
 require_once 'model/KategorieModel.php';
+require_once 'model/GetAllModel.php';
 /**
  * Siehe Dokumentation im DefaultController.
  */
@@ -21,11 +22,12 @@ class HomeController
 
     public function rezeptAnzeigen()
     {
-        $rezeptModel = new RezeptModel();
+        $getAllModel = new GetAllModel();
         
         $view = new View('homeAnzeige_index');
         $view->title = 'Rezept';    
-        $view->rezept = $rezeptModel->readRezeptById($_GET['id']);
+        echo $_GET['id'];
+        $view->rezept = $getAllModel->readRezeptAndKommentar($_GET['id']);
         $view->display();
     }
 
