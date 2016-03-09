@@ -35,7 +35,7 @@
                             </tr>
 				        </table>
                     </div>
-                    <button id="anzeige-button" type="button" class="btn btn-success">Anzeigen</button>
+                    <a href="home/rezeptAnzeigen?id=<?=$rezept->id;?>" id="anzeige-button" type="button" class="btn btn-success">Anzeigen</a>
                 </div>
             </p>
 		<?php endforeach ?>

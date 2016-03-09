@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once 'model/RezeptModel.php';
 require_once 'model/KategorieModel.php';
 /**
@@ -13,18 +13,19 @@ class HomeController
         $kategorieModel = new KategorieModel();
         
         $view = new View('home_index');
-        $view->title = 'Benutzer';
-        $view->heading = 'Benutzer';
+        $view->title = 'Home';
         $view->rezepte = $rezeptModel->readRezept();
         $view->kategorien = $kategorieModel->readKategorie();
         $view->display();
     }
 
-    public function create()
+    public function rezeptAnzeigen()
     {
-        $view = new View('user_create');
-        $view->title = 'Benutzer erstellen';
-        $view->heading = 'Benutzer erstellen';
+        $rezeptModel = new RezeptModel();
+        
+        $view = new View('homeAnzeige_index');
+        $view->title = 'Rezept';    
+        $view->rezept = $rezeptModel->readRezeptById($_GET['id']);
         $view->display();
     }
 
