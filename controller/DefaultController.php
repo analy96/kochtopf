@@ -51,7 +51,7 @@ class DefaultController
     	
     	if($userinfo->passwort == $_POST['passwort']){
     		session_start();
-    		$_SESSION['benutzer_id'] = $userinfo->benutzername;
+    		$_SESSION['userid'] = $userinfo->id;
     		header('location: /home');
     	}else{
     		echo "Passwort falsch";

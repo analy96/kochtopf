@@ -11,10 +11,10 @@
 			<form action="default/login" method="post">
 				<h3>Login</h3>
 				<p>Username</p>
-				<input name="name" type="text" class="form-control" placeholder="Username">
+				<input name="name" type="text" class="form-control" placeholder="Username" required="required">
 				</br>
 				<p>Passwort</p>
-				<input name="passwort" type="password" class="form-control" placeholder="Passwort">
+				<input name="passwort" type="password" class="form-control" placeholder="Passwort" required="required">
 				</br>
 				</br>
 				<button type="submit" class="btn btn-success">Login</button>

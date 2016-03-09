@@ -1,6 +1,6 @@
 <?php
 
-require_once 'lib/Model.php';
+require_once __DIR__.'/../lib/Model.php';
 
 /**
  * Das UserModel ist zustÃ¤ndig fÃ¼r alle Zugriffe auf die Tabelle "user".
@@ -40,6 +40,10 @@ class UserModel extends Model
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
+        
+        $session_start();
+        $user = readByUsername($_POST['benutzername']);
+        $_SESSION['userid'] = $user['id'];
     }
     
     public function readByUsername($benutzername){
@@ -73,12 +77,12 @@ class UserModel extends Model
     
     public function checkUsername($username){
     	// Query erstellen
-    	$query = "SELECT benutzername FROM $this->tableName WHERE benutzername=?";
+    	$query = "SELECT * FROM benutzer WHERE benutzername=?";
     	
     	// Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
     	// und die Parameter "binden"
     	$statement = ConnectionHandler::getConnection()->prepare($query);
-    	$statement->bind_param('s', $benutzername);
+    	$statement->bind_param('s', $username);
     	
     	// Das Statement absetzen
     	$statement->execute();
@@ -92,13 +96,15 @@ class UserModel extends Model
     	// Ersten Datensatz aus dem Reultat holen
     	$row = $result->fetch_object();
     	
+    	
     	// Datenbankressourcen wieder freigeben
     	$result->close();
+    	
     	
     	if (isset($row)){
     		return false;
     	}else{
-    			return true;
-    		}
+    		return true;
+    	}
     }
 }
