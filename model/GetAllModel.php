@@ -34,7 +34,7 @@ class GetAllModel extends Model
      public function readRezeptAndKommentar($rezeptId)
      {
         // Query erstellen
-        $query = "select r.titel, b.benutzername, r.rezept, r.bewertung, ka.kategorie, ko.kommentar from $this->tableNameRez as r,
+        $query = "select r.id ,r.titel, b.benutzername, r.rezept, r.bewertung, ka.kategorie, ko.kommentar from $this->tableNameRez as r,
                   $this->tableNameBen as b, $this->tableNameKat as ka, $this->tableNameKom as ko WHERE r.benutzer_id=b.id and r.kategorie_id=ka.id
                   and ko.rezept_id=r.id and r.id=$rezeptId" ;
 
@@ -55,31 +55,15 @@ class GetAllModel extends Model
         return $rows;
      }
     
-    public function readByUsername($benutzername){
+        public function kommentieren($text,$rezeptId){
     	// Query erstellen
-        $query = "SELECT titel,beschreibung FROM `rezept` WHERE 1";
+        $query = "INSERT INTO $this->tableNameKom (kommentar,rezept_id) VALUES (?,?)";
 
-        // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
-        // und die Parameter "binden"
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('s', $benutzername);
+        $statement->bind_param('si',$text,$rezeptId);
 
-        // Das Statement absetzen
-        $statement->execute();
-
-        // Resultat der Abfrage holen
-        $result = $statement->get_result();
-        if (!$result) {
+        if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-
-        // Ersten Datensatz aus dem Reultat holen
-        $row = $result->fetch_object();
-
-        // Datenbankressourcen wieder freigeben
-        $result->close();
-
-        // Den gefundenen Datensatz zurückgeben
-        return $row;
-    }
+     }
 }

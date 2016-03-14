@@ -31,20 +31,15 @@ class HomeController
         $view->display();
     }
 
-    public function doCreate()
+    public function kommentieren()
     {
-        if ($_POST['send']) {
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $userModel = new UserModel();
-            $userModel->create($firstName, $lastName, $email, $password);
-        }
+            $getAllModel = new GetAllModel();
+            $text = $_POST['text'];
+            $id = $_POST['id'];
+            $getAllModel->kommentieren($text, $id);
+            header("Location: /home/rezeptAnzeigen?id=$id");
 
         // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
     }
 
     public function delete()
