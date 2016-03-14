@@ -1,17 +1,17 @@
 <?php
 
-require_once __DIR__.'/DefaultControler.php';
+require_once __DIR__.'/UserModel.php';
 
 $benutzername = $_GET['n'];
 
 
-$return = DefaultController::login($benutzername);
+$return = UserModel::checkUsername($benutzername);
 
 
 if($return == true){
 	echo "true";
 }else{
-	echo "Das Passwort stimmt nicht mit dem Benutzername überein.";
+	echo "Benutzername bereits vergeben. Bitte wähle einen anderen Benutzernamen.";
 }
 
 

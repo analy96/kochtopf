@@ -82,7 +82,6 @@ class View
     {
         extract($this->properties);
 
-
 		if($title == "Login"){
 			require $this->viewfile;
 		}else{

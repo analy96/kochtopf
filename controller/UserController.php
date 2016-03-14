@@ -32,17 +32,33 @@ class UserController
             $nachname = $_POST['nachname'];
             $email = $_POST['email'];
             $alter = $_POST['alter'];
-            $geschlecht = 'm';//$_POST['geschlecht'];
+            $geschlecht = (isset($_POST['geschlecht'])) ? $_POST['geschlecht'] : "";
             $passwort = $_POST['passwort'];
 
-            $userModel = new UserModel();
-            $userModel->create($benutzername, $vorname, $nachname, $email, $alter, $geschlecht, $passwort);
+            $emailregex = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+            $pwregex = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/';
+            $ok = false;
 
+            if(strlen($benutzername) > 2){
+              if(UserModel::checkUsername($benutzername) == true){
+                if(strlen($vorname) > 2 && strlen($nachname) > 2){
+                  if (preg_match($emailregex, $email)) {
+                    if (preg_match($pwregex, $passwort)) {
+                      $ok = true;
+                    }
+                  }
+                }
+              }
+            }
 
-        echo $_SESSION['userid'];
-        echo $_POST['geschlecht'];
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /home');
+            if($ok == false){
+              $this->index();
+            }else{
+              $userModel = new UserModel();
+              $userModel->create($benutzername, $vorname, $nachname, $email, $alter, $geschlecht, $passwort);
+              // Anfrage an die URI /user weiterleiten (HTTP 302)
+              header('Location: /home');
+            }
     }
 
     public function delete()
