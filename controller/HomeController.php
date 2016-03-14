@@ -12,10 +12,35 @@ class HomeController
     {
         $rezeptModel = new RezeptModel();
         $kategorieModel = new KategorieModel();
-        
+        $order = "";
+        $where = "";
+
+        if(isset($_GET['w'])){
+          $where = " where titel like '%".$_GET['w']."%'";
+        }
+
+
+        if(isset($_GET['o'])){
+          $order = $_GET['o'];
+          switch ($order) {
+            case 'b':
+              $order = "order by bewertung asc, anzahl_bewertung asc";
+              break;
+            case 'a':
+              $order = "order by erfasst_am desc";
+              break;
+            case 'n':
+              $order = "order by erfasst_am asc";
+              break;
+            default:
+              $order = "";
+              break;
+          }
+        }
+
         $view = new View('home_index');
         $view->title = 'Home';
-        $view->rezepte = $rezeptModel->readRezept();
+        $view->rezepte = $rezeptModel->readRezept($where,$order);
         $view->kategorien = $kategorieModel->readKategorie();
         $view->display();
     }
@@ -23,9 +48,9 @@ class HomeController
     public function rezeptAnzeigen()
     {
         $getAllModel = new GetAllModel();
-        
+
         $view = new View('homeAnzeige_index');
-        $view->title = 'Rezept';    
+        $view->title = 'Rezept';
         echo $_GET['id'];
         $view->rezept = $getAllModel->readRezeptAndKommentar($_GET['id']);
         $view->display();

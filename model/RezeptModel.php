@@ -28,10 +28,12 @@ class RezeptModel extends Model
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
-     public function readRezept()
+     public function readRezept($where,$order)
      {
         // Query erstellen
-        $query = "SELECT * FROM $this->tableName LIMIT 0, 100";
+        $query = "SELECT * FROM $this->tableName ".$where." ".$order." LIMIT 0, 100";
+
+        echo $query;
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->execute();
@@ -49,7 +51,7 @@ class RezeptModel extends Model
 
         return $rows;
      }
-    
+
     public function readRezeptById($rezeptId){
     	// Query erstellen
         $query = "SELECT * FROM `rezept` WHERE id = $rezeptId";

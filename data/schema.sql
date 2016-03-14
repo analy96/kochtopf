@@ -27,7 +27,7 @@ CREATE TABLE  rezept (
   titel VARCHAR(64)  NOT NULL,
   rezept  VARCHAR(5000)  NOT NULL,
   bewertung   float(5,4),
-  anzahl_bewerung int,
+  anzahl_bewertung int,
   erfasst_am date,
   kategorie_id int unsigned not null,
   benutzer_id int unsigned not null,
