@@ -43,19 +43,26 @@ class DefaultController
         $view->heading = 'Login';
         $view->display();
     }
-    
-    public function login($benutzername){
-    	$user = new UserModel();
-    	$user->table = 'benutzer';
-    	$userinfo = $user->readByUsername($benutzername);
-    	$passwort = sha1($userinfo->passwort);
-    	
-    	if($passwort == $_POST['passwort']){
-    		return true;
-    	}else{
-    		return false;
-    	}
-    }
-    
-	
+
+    public function login(){
+        $benutzername = $_POST['name'];
+        $passworteingabe  = $_POST['passwort'];
+        $passworteingabe = sha1($passworteingabe);
+
+      	$user = new UserModel();
+      	$user->table = 'benutzer';
+      	$userinfo = $user->readByUsername($benutzername);
+  	     $passwort = $userinfo->passwort;
+
+        if($passwort != $passworteingabe){
+          $_POST['name'] = $benutzername;
+          $_POST['fehler'] = 'true';
+          $this->index();
+        }else{
+            $_SESSION['id'] = $userinfo->id;
+            header('Location: /home');
+        }
+
+
+}
 }

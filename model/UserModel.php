@@ -30,7 +30,7 @@ class UserModel extends Model
      */
     public function create($benutzername, $vorname, $nachname, $email, $jahre_alt, $geschlecht, $passwort)
     {
-        $password = sha1($passwort);
+        $passwort = sha1($passwort);
 
         $query = "INSERT INTO $this->tableName (benutzername, vorname, nachname, email, jahre_alt, geschlecht, passwort) VALUES (?, ?, ?, ?,?,?,?)";
 
@@ -43,7 +43,7 @@ class UserModel extends Model
 
         session_start();
         $user = $this->readByUsername($_POST['benutzername']);
-        $_SESSION['userid'] = $user->id;
+        $_SESSION['id'] = $user->id;
     }
 
     public function readByUsername($benutzername){
