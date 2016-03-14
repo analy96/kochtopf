@@ -7,7 +7,7 @@
     </div>    
     <select id="dropdown-liste" >
         <?php foreach ($kategorien as $kategorie): ?>
-        <option value=<?= $kategorie->beschreibung;?>><?= $kategorie->beschreibung;?></option>
+        <option value=<?= $kategorie->kategorie;?>><?= $kategorie->kategorie;?></option>
         <?php endforeach ?>    
     </select>    
 </div>
@@ -31,7 +31,7 @@
                                 <td><?= $rezept->titel;?></td>
                             </tr>
                             <tr>
-                                <td><?= $rezept->beschreibung;?></td> 
+                                <td><?= $rezept->rezept;?></td> 
                             </tr>
 				        </table>
                     </div>

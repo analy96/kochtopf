@@ -34,7 +34,7 @@ class GetAllModel extends Model
      public function readRezeptAndKommentar($rezeptId)
      {
         // Query erstellen
-        $query = "select r.titel, b.benutzername, r.beschreibung, r.bewertung, ka.beschreibung, ko.kommentar from $this->tableNameRez as r,
+        $query = "select r.titel, b.benutzername, r.rezept, r.bewertung, ka.kategorie, ko.kommentar from $this->tableNameRez as r,
                   $this->tableNameBen as b, $this->tableNameKat as ka, $this->tableNameKom as ko WHERE r.benutzer_id=b.id and r.kategorie_id=ka.id
                   and ko.rezept_id=r.id and r.id=$rezeptId" ;
 

@@ -6,17 +6,27 @@
         <title>Kochtopf</title>
     </head>
     <body>
-        <div id="container-aussen" class="container-fluid">
-            <a href="#">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
-            <a href="/home">
-                <span class="glyphicon glyphicon-home"></span>
-            </a>
-            <a href="/">
-                <span class="glyphicon glyphicon-remove-circle"></span>
-                <?php session_destroy();?>
-            </a>
+        <div id="wrapper" >
+            <div id="navigation">
+            <ul id="navigation-liste">
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/home">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                        <?php session_destroy();?>
+                    </a>
+                </li>
+            </ul>
+            </div>
                 
                 
                 

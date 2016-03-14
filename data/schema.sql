@@ -4,7 +4,7 @@ use kochtopf;
 
 CREATE TABLE  kategorie (
   id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  beschreibung varchar(64) not null,
+  kategorie varchar(64) not null,
   PRIMARY KEY  (id)
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE  benutzer (
 CREATE TABLE  rezept (
   id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
   titel VARCHAR(64)  NOT NULL,
-  beschreibung  VARCHAR(5000)  NOT NULL,
+  rezept  VARCHAR(5000)  NOT NULL,
   bewertung   float(5,4),
   anzahl_bewerung int,
   erfasst_am date,
