@@ -56,7 +56,7 @@ $("form").submit(function(event){
 
 	});
 
-  
+
 
 
   	$('#nachname').change(function () {
@@ -201,7 +201,7 @@ $("form").submit(function(event){
 				</br>
 				</br>
 				<button type="submit" class="btn btn-success">Registrieren</button>
-				<a href="/" class="btn btn-default">Zurück</a>
+				<a href="/" class="btn btn-default">Login</a>
 			</form>
 	</div>
 </body>
