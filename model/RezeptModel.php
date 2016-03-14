@@ -33,8 +33,6 @@ class RezeptModel extends Model
         // Query erstellen
         $query = "SELECT * FROM $this->tableName ".$where." ".$order." LIMIT 0, 100";
 
-        echo $query;
-
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->execute();
 

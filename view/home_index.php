@@ -3,7 +3,7 @@
     <div class="input-group">
         <input name="w" type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
             </span>
     </div>
   </form>

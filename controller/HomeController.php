@@ -24,13 +24,13 @@ class HomeController
           $order = $_GET['o'];
           switch ($order) {
             case 'b':
-              $order = "order by bewertung asc, anzahl_bewertung asc";
+              $order = "order by bewertung desc";
               break;
             case 'a':
-              $order = "order by erfasst_am desc";
+              $order = "order by erfasst_am asc";
               break;
             case 'n':
-              $order = "order by erfasst_am asc";
+              $order = "order by erfasst_am desc";
               break;
             default:
               $order = "";
