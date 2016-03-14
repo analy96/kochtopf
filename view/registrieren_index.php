@@ -43,6 +43,33 @@ $("form").submit(function(event){
 		}
 	});*/
 });
+
+
+	$('#vorname').change(function () {
+    $('#vorname').removeClass('validation_ok');
+    $('#vorname').removeClass('validation_nok');
+		if($('#vorname').val().length > 1){
+	     $('#vorname').addClass('validation_ok');
+		}else{
+		    $('#vorname').addClass('validation_nok');
+		}
+
+	});
+
+  
+
+
+  	$('#nachname').change(function () {
+      $('#nachname').removeClass('validation_ok');
+      $('#nachname').removeClass('validation_nok');
+  		if($('#nachname').val().length > 1){
+  	     $('#nachname').addClass('validation_ok');
+  		}else{
+  		    $('#nachname').addClass('validation_nok');
+  		}
+
+  	});
+
 	$('#benutzername').change(function () {
 		if($('#benutzername').val().length > 2){
 			$('#benutzername').removeClass('validation_nok');
@@ -149,10 +176,10 @@ $("form").submit(function(event){
         <p id="bfehler" class="nfehler">Dieser Benutzername ist schon vergeben!<p>
 				</br>
 				<p>Vorname</p>
-				<input name="vorname" type="text" class="form-control" placeholder="Vorname" required="required" value="<?php echo (isset($_POST['vorname'])) ? $_POST['vorname'] : '' ?>">
+				<input name="vorname" id="vorname" type="text" class="form-control" placeholder="Vorname" required="required" value="<?php echo (isset($_POST['vorname'])) ? $_POST['vorname'] : '' ?>">
 				</br>
 				<p>Nachname</p>
-				<input name="nachname" type="text" class="form-control" placeholder="Nachname" required="required" value="<?php echo (isset($_POST['nachname'])) ? $_POST['nachname'] : '' ?>">
+				<input name="nachname" id="nachname" type="text" class="form-control" placeholder="Nachname" required="required" value="<?php echo (isset($_POST['nachname'])) ? $_POST['nachname'] : '' ?>">
 				</br>
 				<p>E-mail</p>
 				<input name="email" type="email" class="form-control" placeholder="E-Mail" required="required" value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : '' ?>">

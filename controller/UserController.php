@@ -41,7 +41,7 @@ class UserController
 
             if(strlen($benutzername) > 2){
               if(UserModel::checkUsername($benutzername) == true){
-                if(strlen($vorname) > 2 && strlen($nachname) > 2){
+                if(strlen($vorname) > 1 && strlen($nachname) > 1){
                   if (preg_match($emailregex, $email)) {
                     if (preg_match($pwregex, $passwort)) {
                       $ok = true;
