@@ -40,12 +40,12 @@ class UserModel extends Model
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-        
+
         session_start();
         $user = $this->readByUsername($_POST['benutzername']);
         $_SESSION['userid'] = $user->id;
     }
-    
+
     public function readByUsername($benutzername){
     	// Query erstellen
         $query = "SELECT * FROM $this->tableName WHERE benutzername=?";
@@ -73,34 +73,34 @@ class UserModel extends Model
         // Den gefundenen Datensatz zurÃ¼ckgeben
         return $row;
     }
-    
-    
+
+
     public function checkUsername($username){
     	// Query erstellen
     	$query = "SELECT * FROM benutzer WHERE benutzername=?";
-    	
+
     	// Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
     	// und die Parameter "binden"
     	$statement = ConnectionHandler::getConnection()->prepare($query);
     	$statement->bind_param('s', $username);
-    	
+
     	// Das Statement absetzen
     	$statement->execute();
-    	
+
     	// Resultat der Abfrage holen
     	$result = $statement->get_result();
     	if (!$result) {
     		throw new Exception($statement->error);
     	}
-    	
+
     	// Ersten Datensatz aus dem Reultat holen
     	$row = $result->fetch_object();
-    	
-    	
+
+
     	// Datenbankressourcen wieder freigeben
     	$result->close();
-    	
-    	
+
+
     	if (isset($row)){
     		return false;
     	}else{

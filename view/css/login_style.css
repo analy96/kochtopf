@@ -19,10 +19,17 @@ body{
 	background-attachment: fixed;
 }
 
+.fehler{
+  color: red;
+  visibility: visible;
+}
 
+.nfehler{
+  display: none;
+}
 
 .main_r{
-	
+
     width: 500px;
     height: 900px;
 	border-radius: 25px;
