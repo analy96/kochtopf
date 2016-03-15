@@ -1,7 +1,7 @@
 <div id="suchfeld" class="col-lg-6">
   <form action="/home/" method="get">
     <div class="input-group">
-        <input name="w" type="text" class="form-control" placeholder="Search for...">
+        <input name="w" type="text" class="form-control" placeholder="Suchen...">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
             </span>
@@ -36,7 +36,7 @@
                             </tr>
 				        </table>
                     </div>
-                    <a href="home/rezeptAnzeigen?id=<?=$rezept->id;?>" id="anzeige-button" type="button" class="btn btn-success">Anzeigen</a>
+                    <a href="/home/rezeptAnzeigen?id=<?=$rezept->id;?>" id="anzeige-button" type="button" class="btn btn-success">Anzeigen</a>
                 </div>
             </p>
 

@@ -27,11 +27,11 @@
 	<?php endif ?>
 </div>
 <div id="popup2" class="overlay">
-    <div class="popup">
+    <div class="popup" style="width: 200px; height: 200px;">
         <a class="close" href="#">&times;</a>
            <FORM ACTION="/home/bewerten" METHOD="post">
                     <p>Bewertung:<p>
-                      <select class="form-control" id="bewertung">
+                      <select name="bewertung" class="form-control" id="bewertung" style="width: 75px;">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -40,19 +40,19 @@
                       </select>
                     </br>
                     </br>
-                    <input type="text" value="<?php echo $_GET['id']?>">
+                    <input name="id" type="text" hidden="hidden" value="<?php echo $_GET['id']?>">
                     <INPUT class="btn btn-success" TYPE="submit" VALUE="Bewerten">
                  </FORM>
     </div>
   </div>
 <div id="popup" class="overlay">
-  	<div class="popup">
+  	<div class="popup" >
     		<h2>Kommentieren:</h2>
 		    <a class="close" href="#">&times;</a>
 			     <FORM ACTION="/Home/kommentieren" METHOD="post">
                     <TEXTAREA name="text" COLS=40 ROWS=6 style="margin: 0px; height: 520px; width: 793px;">
                     </TEXTAREA>
                     <input type="hidden" name="id" value="<?= $rezept[0]->id;?>" />
-                    <P><INPUT TYPE="submit" VALUE="submit">
+                    <P><INPUT TYPE="submit" VALUE="Kommentieren" class="btn btn-success">
                  </FORM>
 	  </div>
