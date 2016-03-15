@@ -17,9 +17,9 @@
     </select>
   </form>
 </div>
-<a href="/home/?o=b" id="kategorie-button" type="button" class="btn btn-success">Beliebteste</a>
-<a href="/home/?o=a" id="kategorie-button" type="button" class="btn btn-success">Älteste</a>
-<a href="/home/?o=n" id="kategorie-button" type="button" class="btn btn-success">Neuste</a>
+<a href="/home/?o=b" id="kategorie-button" type="button" class="btn btn-success" >Beliebteste</a>
+<a href="/home/?o=a" id="kategorie-button" type="button" class="btn btn-success" >Älteste</a>
+<a href="/home/?o=n" id="kategorie-button" type="button" class="btn btn-success" >Neuste</a>
 <div id="inhalt" class="container-fluid">
     <div>
         <?php if (empty($rezepte)): ?>
@@ -33,11 +33,11 @@
 			        <div id="innere-zelle" class="container">
                         <table>
                             <tr>
-                                <td><?= $rezept->titel;?></td>
+                                <td><h2><?= $rezept->titel;?></h2></td>
                             </tr>
-                            <tr>
+                            <!--<tr>
                                 <td><?= $rezept->rezept;?></td>
-                            </tr>
+                            </tr>-->
 				        </table>
                     </div>
                     <a href="/home/rezeptAnzeigen?id=<?=$rezept->id;?>" id="anzeige-button" type="button" class="btn btn-success">Anzeigen</a>

@@ -6,22 +6,32 @@
     <?php else: ?>
     <div id="rezeptAnzeigen" id="aussen-zelle" class="container">
         <div id="head-inhalt-homeAnzeige" class="container">
-            Titel: <?= $rezept[0]->titel;?> User:<?= $rezept[0]->benutzername;?>
+            <h2><?= $rezept[0]->titel;?></h2> User:<?= $rezept[0]->benutzername;?>
+          </br>
+          </br>
+          </br>
+        </hr>
         </div>
         <div id="body-inhalt-homeAnzeige" class="container">
             <?= $rezept[0]->rezept;?>
+            </br>
+            </br>
+            </br>
         </div>
+            <p>Bewertung: </p><h3><?= $rezept[0]->bewertung;?></h3>
+            <p>Kategorie: </p><h3><?= $rezept[0]->kategorie;?></h3>
             <a id="auswahl-button" href="/home" id="zurück-button-homeAnzeige" type="button" class="btn btn-success">Zurück</a>
-            <?= $rezept[0]->bewertung;?>
             <a id="auswahl-button" href="#popup" id="kommentieren-button-homeAnzeige" type="button" class="btn btn-success">Kommentieren</a>
             <a id="auswahl-button" href="#popup2" id="bewerten-button" type="button" class="btn btn-success">Bewerten</a>
-            <table id="auswahl-button">
-                    <td>Kategorie: <?= $rezept[0]->kategorie;?></td>
-                </tr>
-            </table>
             <div id="kommentar-inhalt-homeAnzeige" class="container">
+            </br>
+            </br>
+            </br>
+                <h3>Kommentare</h3>
                 <?php foreach ($rezept as $kommentare): ?>
                     <p id="kommentar-text"><?=$kommentare->kommentar; ?></p>
+                  </br>
+                </hr>
                 <?php endforeach ?>
         </div>
 	<?php endif ?>
