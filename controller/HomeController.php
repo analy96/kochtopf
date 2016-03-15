@@ -51,7 +51,6 @@ class HomeController
 
         $view = new View('homeAnzeige_index');
         $view->title = 'Rezept';
-        echo $_GET['id'];
         $view->rezept = $getAllModel->readRezeptAndKommentar($_GET['id']);
         $view->display();
     }

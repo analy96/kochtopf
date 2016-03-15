@@ -34,18 +34,16 @@ class GetAllModel extends Model
      public function readRezeptAndKommentar($rezeptId)
      {
         // Query erstellen
-        $query = "select r.id ,r.titel, b.benutzername, r.rezept, r.bewertung, ka.kategorie, ko.kommentar from $this->tableNameRez as r,
-                  $this->tableNameBen as b, $this->tableNameKat as ka, $this->tableNameKom as ko WHERE r.benutzer_id=b.id and r.kategorie_id=ka.id
-                  and ko.rezept_id=r.id and r.id=$rezeptId" ;
+        $query = "select r.id, r.titel, b.benutzername, r.rezept, r.bewertung, ka.kategorie, ko.kommentar from $this->tableNameBen as b,
+        $this->tableNameKat as ka, $this->tableNameRez as r left join $this->tableNameKom as ko on ko.rezept_id=r.id where r.benutzer_id=b.id and r.kategorie_id=ka.id and r.id=?" ;
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->execute();
+        $statement->bind_param('i',$rezeptId);
 
-        $result = $statement->get_result();
-        if (!$result) {
+        if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-
+        $result = $statement->get_result();
         // Datensätze aus dem Resultat holen und in das Array $rows speichern
         $rows = array();
         while ($row = $result->fetch_object()) {
@@ -59,16 +57,15 @@ class GetAllModel extends Model
      {
         // Query erstellen
         $query = "select r.rezept,r.titel, r.id, r.bewertung, ka.kategorie from $this->tableNameRez as r, $this->tableNameBen as b,
-                    $this->tableNameKat as ka WHERE r.benutzer_id=b.id and r.kategorie_id=ka.id and b.id=$uId" ;
+                    $this->tableNameKat as ka WHERE r.benutzer_id=b.id and r.kategorie_id=ka.id and b.id=?" ;
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->execute();
+        $statement->bind_param('i',$uId);
 
-        $result = $statement->get_result();
-        if (!$result) {
+        if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-
+ $result = $statement->get_result();
         // Datensätze aus dem Resultat holen und in das Array $rows speichern
         $rows = array();
         while ($row = $result->fetch_object()) {
@@ -92,24 +89,38 @@ class GetAllModel extends Model
         
         public function rezeptLoeschen($rid){
         // Query erstellen
-        $query = "DELETE FROM $this->tableNameRez WHERE id=$rid" ;
+        $query = "DELETE FROM $this->tableNameRez WHERE id=?" ;
 
-        $statement = ConnectionHandler::getConnection()->prepare($query);
+         $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i',$rid);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-     }
+        }
         
         public function neu($uId,$text,$titel,$kategorie){
         // Query erstellen
-        $query = "INSERT INTO $this->tableNameRez (`titel`, `rezept`, `kategorie_id`, `benutzer_id`) VALUES ('$titel','$text',$kategorie,$uId)" ;
+        $query = "INSERT INTO $this->tableNameRez (`titel`, `rezept`, `kategorie_id`, `benutzer_id`) VALUES (?,?,?,?)" ;
 
          $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ssii',$titel,$text,$kategorie,$uId);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-     }
+        }
+     
+     public function rezeptBearbeiten($id,$text){
+        // Query erstellen
+        $query = "UPDATE $this->tableNameRez SET `rezept`=? WHERE id=?" ;
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('si',$text,$id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+        }
 
 }

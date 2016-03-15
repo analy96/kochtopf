@@ -54,14 +54,13 @@ class RezeptModel extends Model
     	// Query erstellen
         $query = "SELECT * FROM `rezept` WHERE id = $rezeptId";
 
-        $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->execute();
+         $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i',$rezeptId);
 
-        $result = $statement->get_result();
-        if (!$result) {
+        if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-
+ $result = $statement->get_result();
         // Datensätze aus dem Resultat holen und in das Array $rows speichern
         $rows = array();
         while ($row = $result->fetch_object()) {

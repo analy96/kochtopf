@@ -56,4 +56,14 @@ class ProfilController
         $getAllModel->rezeptLoeschen($_GET['id']);
         header('Location: /profil'); 
     }
+    public function bearbeiten()
+    {
+        $getAllModel = new GetAllModel();
+        $id=$_POST['id'];
+        $text=$_POST['text'];
+        $view = new View('profil_index');
+        $view->title = 'Profil';    
+        $getAllModel->rezeptBearbeiten($id,$text);
+        header('Location: /profil'); 
+    }
 }

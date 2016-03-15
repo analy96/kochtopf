@@ -45,7 +45,7 @@ class ProfilModel extends Model
         if (!$result) {
             throw new Exception($statement->error);
         }
-
+ $result = $statement->get_result();
         // Datensätze aus dem Resultat holen und in das Array $rows speichern
         $rows = array();
         while ($row = $result->fetch_object()) {
