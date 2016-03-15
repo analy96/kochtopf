@@ -1,5 +1,5 @@
-<div id="inhalt" class="container-fluid">
-                        <a href="#popup2" id="neues-rezept-button" type="button" class="btn btn-success">Neues Rezept</a>
+<a href="#popup2" id="auswahl-button" id="neuesRezept-button" type="button" class="btn btn-success">Neues Rezept</a>
+<div id="inhalt" class="container-fluid">  
         <?php if (empty($rezepte)): ?>
 		    <div class="dhd">
 			    <h2 class="item title">Hoopla! Keine Rezepte gefunden.</h2>
@@ -18,8 +18,8 @@
                             </tr>
 				        </table>
                     </div>
-                    <a name="text" value="<?=$rezept->rezept;?>" href="#popup1<?=$rezept->id;?>" id="anzeige-button" type="button" class="btn btn-success">Anzeigen</a>
-                    <a href="profil/rezeptLoeschen?id=<?=$rezept->id;?>" id="löschen-button" type="button" class="btn btn-success">Löschen</a>
+                    <a id="auswahl-button" name="text" value="<?=$rezept->rezept;?>" href="#popup1<?=$rezept->id;?>" id="anzeige-button" type="button" class="btn btn-success">Anzeigen</a>
+                    <a id="auswahl-button" href="profil/rezeptLoeschen?id=<?=$rezept->id;?>" id="löschen-button" type="button" class="btn btn-success">Löschen</a>
                 </div>
             </p>
             <div id="popup1<?=$rezept->id;?>" class="overlay">
