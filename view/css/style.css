@@ -33,7 +33,7 @@
     list-style-type: none;
     margin: 0; padding: 0;
 }
-#inhalt{   
+#inhalt{
     overflow-y: scroll;
     margin-left: auto;
     margin-right: 20px;
@@ -72,7 +72,7 @@
 }
 
 #inhalt-homeAnzeige{
-   border: 1px solid royalblue;  
+   border: 1px solid royalblue;
    border: 1px solid pink;
    overflow: hidden;
 }
@@ -81,7 +81,7 @@
     float: left;
 }
 #body-inhalt-homeAnzeige{
-    border: 1px solid green;  
+    border: 1px solid green;
     height: 90%;
     overflow: auto;
 }
@@ -92,7 +92,7 @@
 }
 #kommentar-text{
     border:1px solid black;
-    
+
 }
 
 .overlay {
@@ -160,4 +160,3 @@ body{
 #auswahl-button{
     float: right;
 }
-
