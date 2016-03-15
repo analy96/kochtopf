@@ -69,4 +69,11 @@ class UserController
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /user');
     }
+    
+    public function logout()
+    {
+        session_destroy();
+        session_unset();
+        header('Location: /');
+    }
 }

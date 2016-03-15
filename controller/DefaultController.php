@@ -38,11 +38,14 @@ class DefaultController
         // In diesem Fall mÃ¶chten wir dem Benutzer die View mit dem Namen
         //   "default_index" rendern. Wie das genau funktioniert, ist in der
         //   View Klasse beschrieben.
+        if(isset($_SESSION['id'])){
+            header('Location: /home');
+        }else{
         $view = new View('login_index');
         $view->title = 'Login';
         $view->heading = 'Login';
         $view->display();
-
+        }
 
     }
 

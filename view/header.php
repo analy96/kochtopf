@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/user/logout">
                         <span class="glyphicon glyphicon-remove-circle"></span>
                         
                     </a>
