@@ -75,4 +75,9 @@ class HomeController
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /user');
     }
+
+    public function bewerten(){
+      $rezeptModel = new RezeptModel();
+      $rezeptModel->bewerten($_POST['bewertung'],$_POST['id']);
+    }
 }
