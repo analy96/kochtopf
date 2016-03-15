@@ -1,4 +1,4 @@
-#inhalt{   
+#inhalt{
     overflow-y: scroll;
     margin-left: auto;
     margin-right: 20px;
@@ -16,9 +16,12 @@
     right: 0;
     left: 0;
     position: absolute;
-    margin: auto; 
+    margin: auto;
     border: 1px solid blue;
     overflow: hidden;
+    background: white;
+    border-radius: 25px;
+
 }
 #navigation{
     border: 1px solid black;
@@ -48,7 +51,7 @@
     right: 0;
     left: 0;
     position: absolute;
-    margin: auto; 
+    margin: auto;
 }
 #dropdown-liste{
     float: right;
@@ -58,7 +61,7 @@
 }
 
 #inhalt-homeAnzeige{
-   border: 1px solid pink;  
+   border: 1px solid pink;
    overflow: hidden;
 }
 #main-homeAnzeige{
@@ -113,9 +116,16 @@
   background: #fff;
   border-radius: 5px;
   width: 800px;
-  height: 600px;
+  height: 650px;
   position: relative;
-  transition: all 5s ease-in-out;
+  /*transition: all 5s ease-in-out;*/
+}
+
+
+body{
+	background-image: url("../../data/background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 .popup h2 {
@@ -142,7 +152,7 @@
 }
 #popup-text{
  width: 90%;
- height: 90%;  
- border:1px solid blue; 
+ height: 90%;
+ border:1px solid blue;
  overflow-y: scroll;
 }

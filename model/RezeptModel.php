@@ -52,7 +52,7 @@ class RezeptModel extends Model
 
     public function readRezeptById($rezeptId){
     	// Query erstellen
-        $query = "SELECT * FROM `rezept` WHERE id = $rezeptId";
+        $query = "SELECT * FROM `rezept` WHERE id = ?";
 
          $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('i',$rezeptId);
@@ -62,12 +62,9 @@ class RezeptModel extends Model
         }
  $result = $statement->get_result();
         // Datensätze aus dem Resultat holen und in das Array $rows speichern
-        $rows = array();
-        while ($row = $result->fetch_object()) {
-            $rows[] = $row;
-        }
+        $row = $result->fetch_object();
 
-        return $rows;
+        return $row;
      }
 
 
@@ -80,24 +77,26 @@ class RezeptModel extends Model
        $neu_bewertung = (($db_bewertung*$db_anzahl)+$bewertung)/$neu_anzahl;
 
        //Bewertung
-       $query = "UPDATE rezept SET bewertung =?";
+       $query = "UPDATE rezept SET bewertung =? where id=?";
 
        $statement = ConnectionHandler::getConnection()->prepare($query);
-       $statement->bind_param('f', $neu_bewertung);
+       $statement->bind_param('di', $neu_bewertung,$rezeptId);
 
        if (!$statement->execute()) {
            throw new Exception($statement->error);
        }
 
        //Anzahl Bewertung
-       $query = "UPDATE rezept SET anzahl_bewertung =?";
+       $query = "UPDATE rezept SET anzahl_bewertung =? where id=?";
 
        $statement = ConnectionHandler::getConnection()->prepare($query);
-       $statement->bind_param('i', $neu_anzahl);
+       $statement->bind_param('ii', $neu_anzahl,$rezeptId);
 
        if (!$statement->execute()) {
            throw new Exception($statement->error);
        }
+
+       header('location: /home/rezeptAnzeigen?id='.$rezeptId);
 
      }
 }

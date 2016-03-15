@@ -14,7 +14,7 @@
                                 <td><?= $rezept->titel;?></td>
                             </tr>
                             <tr>
-                                <td><?= $rezept->rezept;?></td> 
+                                <td><?= $rezept->rezept;?></td>
                             </tr>
 				        </table>
                     </div>
@@ -33,16 +33,16 @@
                             <?=$rezept->rezept;?>
                         </TEXTAREA>
                         <P><INPUT type="hidden" name="id" value="<?=$rezept->id;?>">
-                        <INPUT TYPE="submit" VALUE="speichern">
+                        <INPUT TYPE="submit" VALUE="Speichern" class="btn btn-success">
                     </FORM>
 	            </div>
             </div>
 		<?php endforeach ?>
-	<?php endif ?>   
+	<?php endif ?>
 </div>
 
 <div id="popup2" class="overlay">
-  	<div class="popup">       
+  	<div class="popup">
 		    <a class="close" href="#">&times;</a>
 			     <FORM ACTION="/Profil/neu" METHOD="post">
                     <select name="dropDown" id="dropdown-liste" >
@@ -53,7 +53,7 @@
                     <input id="titel" name="titel">
                     <TEXTAREA name="text" COLS=40 ROWS=6 style="margin: 0px; height: 520px; width: 793px;">
                     </TEXTAREA>
-                    <P><INPUT TYPE="submit" VALUE="submit">
+                    <P><INPUT TYPE="submit" VALUE="Erstellen" class="btn btn-success">
                  </FORM>
 	  </div>
 </div>
