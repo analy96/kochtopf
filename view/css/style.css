@@ -4,7 +4,6 @@
     margin-right: 20px;
     margin-top: 28px;
     margin-bottom: 80px;
-    border: 1px solid green;
     height: 90%;
 }
 #wrapper{
@@ -17,14 +16,12 @@
     left: 0;
     position: absolute;
     margin: auto;
-    border: 1px solid blue;
     overflow: hidden;
     background: white;
     border-radius: 25px;
 
 }
 #navigation{
-    border: 1px solid black;
     font-size: 500%;
     padding-right: 5px;
     float: left;
@@ -38,17 +35,14 @@
     margin-left: auto;
     margin-right: 20px;
     margin-top: 60px;
-    border: 1px solid orangered;
     height: 90%;
 }
 
 #aussen-zelle{
-    border: 1px solid yellowgreen;
     height: 140px;
     padding: 0;
 }
 #innere-zelle{
-    border: 1px solid red;
     height: 100px;
     overflow: hidden;
     padding-left: 0;
@@ -72,27 +66,18 @@
 }
 
 #inhalt-homeAnzeige{
-   border: 1px solid royalblue;
-   border: 1px solid pink;
    overflow: hidden;
 }
 #head-inhalt-homeAnzeige{
-    border: 1px solid red;
     float: left;
 }
 #body-inhalt-homeAnzeige{
-    border: 1px solid green;
     height: 90%;
     overflow: auto;
 }
 #kommentar-inhalt-homeAnzeige{
-    border: 1px solid red;
     overflow-y: scroll;
     height: 50%;;
-}
-#kommentar-text{
-    border:1px solid black;
-
 }
 
 .overlay {
@@ -154,7 +139,6 @@ body{
 #popup-text{
  width: 90%;
  height: 90%;
- border:1px solid blue;
  overflow-y: scroll;
 }
 #auswahl-button{
