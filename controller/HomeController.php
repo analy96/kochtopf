@@ -19,11 +19,6 @@ class HomeController
           $where = " where titel like '%".$_GET['w']."%'";
         }
 
-        /*if(isset($_GET['k'])){
-          echo $_GET['k'];
-          //$where += " where kategorie_id = ".$_GET['k'];
-        }*/
-
 
         if(isset($_GET['o'])){
           $order = $_GET['o'];
