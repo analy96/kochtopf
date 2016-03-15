@@ -18,14 +18,11 @@
                             </tr>
 				        </table>
                     </div>
-                    <a value="<?=$rezept->rezept;?>" href="#popup1" id="anzeige-button" type="button" class="btn btn-success">Anzeigen</a>
+                    <a name="text" value="<?=$rezept->rezept;?>" href="#popup1<?=$rezept->id;?>" id="anzeige-button" type="button" class="btn btn-success">Anzeigen</a>
                     <a href="profil/rezeptLoeschen?id=<?=$rezept->id;?>" id="löschen-button" type="button" class="btn btn-success">Löschen</a>
                 </div>
             </p>
-		<?php endforeach ?>
-	<?php endif ?>
-</div>
-<div id="popup1" class="overlay">
+            <div id="popup1<?=$rezept->id;?>" class="overlay">
   	<div class="popup">
     		<a class="close" href="#">&times;</a>
             <div id="popup-text" >
@@ -33,6 +30,10 @@
                 </div>
 	  </div>
 </div>
+		<?php endforeach ?>
+	<?php endif ?>   
+</div>
+
 <div id="popup2" class="overlay">
   	<div class="popup">
         
