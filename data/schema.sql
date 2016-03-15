@@ -45,6 +45,9 @@ CREATE TABLE  kommentar (
   PRIMARY KEY  (id)
   );
   Alter table kommentar add foreign key fk_rezept (rezept_id) REFERENCES rezept(id);
+  
+
+ INSERT INTO benutzer(benutzername,vorname,nachname,email,passwort) values ('admin','admin','admin','admin@admin.ch','63f8a1093530c4ba4749e8a957c9a9f318c86bdc');
 
 
 create user koch@localhost IDENTIFIED by 'gibbiX12345';

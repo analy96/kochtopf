@@ -42,6 +42,8 @@ class DefaultController
         $view->title = 'Login';
         $view->heading = 'Login';
         $view->display();
+
+
     }
 
     public function login(){
