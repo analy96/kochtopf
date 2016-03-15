@@ -31,7 +31,7 @@ class KategorieModel extends Model
      public function readKategorie()
      {
         // Query erstellen
-        $query = "SELECT `kategorie` FROM $this->tableName";
+        $query = "SELECT `kategorie`,`id` FROM $this->tableName";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->execute();

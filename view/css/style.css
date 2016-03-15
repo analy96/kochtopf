@@ -139,3 +139,9 @@
   max-height: 100%;
   overflow: auto;
 }
+#popup-text{
+ width: 90%;
+ height: 90%;  
+ border:1px solid blue; 
+ overflow-y: scroll;
+}

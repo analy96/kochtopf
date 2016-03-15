@@ -18,41 +18,42 @@ class ProfilController
         
         $view = new View('profil_index');
         $view->title = 'Profil';
-        $view->rezepte = $getAllModel->readRezeptAndKommentarProfil('202');
+        $view->kategorien = $kategorieModel->readKategorie();
+        $view->rezepte = $getAllModel->readRezeptAndKommentarProfil($_SESSION['id']);
         $view->display();
         
-        
-        $view->display();
     }
-
+    public function neu()
+    {
+        $getAllModel = new GetAllModel();
+        
+        $dropDown=$_POST['dropDown'];
+        $text=$_POST['text'];
+        $titel=$_POST['titel'];
+        
+        $view = new View('profil_index');
+        $view->title = 'Profil';    
+        $getAllModel->neu($_SESSION['id'],$text,$titel,$dropDown);
+        header('Location: /profil');     
+    }
+    
     public function rezeptAnzeigen()
     {
         $getAllModel = new GetAllModel();
         
         $view = new View('homeAnzeige_index');
         $view->title = 'Rezept';    
-        echo $_GET['id'];
         $view->rezept = $getAllModel->readRezeptAndKommentar($_GET['id']);
         $view->display();
     }
-
-    public function kommentieren()
+    
+    public function rezeptLoeschen()
     {
-            $getAllModel = new GetAllModel();
-            $text = $_POST['text'];
-            $id = $_POST['id'];
-            $getAllModel->kommentieren($text, $id);
-            header("Location: /home/rezeptAnzeigen?id=$id");
-
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-    }
-
-    public function delete()
-    {
-        $userModel = new UserModel();
-        $userModel->deleteById($_GET['id']);
-
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
+        $getAllModel = new GetAllModel();
+        
+        $view = new View('profil_index');
+        $view->title = 'Profil';    
+        $getAllModel->rezeptLoeschen($_GET['id']);
+        header('Location: /profil'); 
     }
 }

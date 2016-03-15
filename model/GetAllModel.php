@@ -58,9 +58,8 @@ class GetAllModel extends Model
         public function readRezeptAndKommentarProfil($uId)
      {
         // Query erstellen
-        $query = "select r.id ,r.titel, b.benutzername, r.rezept, r.bewertung, ka.kategorie, ko.kommentar from $this->tableNameRez as r,
-                  $this->tableNameBen as b, $this->tableNameKat as ka, $this->tableNameKom as ko WHERE r.benutzer_id=b.id and r.kategorie_id=ka.id
-                  and ko.rezept_id=r.id and b.id=202" ;
+        $query = "select r.rezept,r.titel, r.id, r.bewertung, ka.kategorie from $this->tableNameRez as r, $this->tableNameBen as b,
+                    $this->tableNameKat as ka WHERE r.benutzer_id=b.id and r.kategorie_id=ka.id and b.id=$uId" ;
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->execute();
@@ -89,5 +88,38 @@ class GetAllModel extends Model
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
+        }
+        
+        public function rezeptLoeschen($rid){
+        // Query erstellen
+        $query = "DELETE FROM $this->tableNameRez WHERE id=$rid" ;
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+        // Datensätze aus dem Resultat holen und in das Array $rows speichern
+        $rows = array();
+        while ($row = $result->fetch_object()) {
+            $rows[] = $row;
+        }
+
+        return $rows;
+        }
+        
+        public function neu($uId,$text,$titel,$kategorie){
+        // Query erstellen
+        $query = "INSERT INTO $this->tableNameRez (`titel`, `rezept`, `kategorie_id`, `benutzer_id`) VALUES ('$titel','$text',$kategorie,$uId)" ;
+
+         $statement = ConnectionHandler::getConnection()->prepare($query);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
      }
+
 }

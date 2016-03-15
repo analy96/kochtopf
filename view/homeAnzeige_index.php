@@ -6,23 +6,17 @@
 	    <?php else: ?>
         <div id="main-homeAnzeige" class="container">
                 <div id="head-inhalt-homeAnzeige" class="container">
-                    <?= $rezept[0]->titel;?> <?= $rezept[0]->benutzername;?>
+                    Titel: <?= $rezept[0]->titel;?> User:<?= $rezept[0]->benutzername;?>
                 </div>
 			    <div id="body-inhalt-homeAnzeige" class="container">
                     <?= $rezept[0]->rezept;?>
                 </div>
                 <div id="footer-inhalt-homeAnzeige" class="container">
-                    <a href="/home" id="zurück-button-homeAnzeige" type="button" class="btn btn-success">Zurück</a>                  
-                    <a href="" id="speichern-button-homeAnzeige" type="button" class="btn btn-success">Speichern</a>
-                    <a href="" id="löschen-button-homeAnzeige" type="button" class="btn btn-success">Zurück</a>                  
+                    <a href="/home" id="zurück-button-homeAnzeige" type="button" class="btn btn-success">Zurück</a>                                  
                     <?= $rezept[0]->bewertung;?>
                     <a href="#popup" id="kommentieren-button-homeAnzeige" type="button" class="btn btn-success">Kommentieren</a>
                         <table>
-                            <tr>
-                                <td><?= $rezept[0]->titel;?></td>
-                            </tr>
-                            <tr>
-                                <td><?= $rezept[0]->kategorie;?></td> 
+                                <td>Kategorie: <?= $rezept[0]->kategorie;?></td> 
                             </tr>
 				        </table>
                     </div>
@@ -39,10 +33,9 @@
     		<h2>Kommentieren:</h2>
 		    <a class="close" href="#">&times;</a>
 			     <FORM ACTION="/Home/kommentieren" METHOD="post">
-                    <TEXTAREA name="text" COLS=40 ROWS=6>
+                    <TEXTAREA name="text" COLS=40 ROWS=6 style="margin: 0px; height: 520px; width: 793px;">
                     </TEXTAREA>
                     <input type="hidden" name="id" value="<?= $rezept[0]->id;?>" />
                     <P><INPUT TYPE="submit" VALUE="submit">
                  </FORM>
 	  </div>
-</div>
