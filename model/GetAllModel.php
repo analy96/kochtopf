@@ -95,21 +95,11 @@ class GetAllModel extends Model
         $query = "DELETE FROM $this->tableNameRez WHERE id=$rid" ;
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->execute();
 
-        $result = $statement->get_result();
-        if (!$result) {
+        if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-
-        // Datensätze aus dem Resultat holen und in das Array $rows speichern
-        $rows = array();
-        while ($row = $result->fetch_object()) {
-            $rows[] = $row;
-        }
-
-        return $rows;
-        }
+     }
         
         public function neu($uId,$text,$titel,$kategorie){
         // Query erstellen

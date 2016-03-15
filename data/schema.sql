@@ -28,7 +28,7 @@ CREATE TABLE  rezept (
   rezept  VARCHAR(5000)  NOT NULL,
   bewertung   float(5,4),
   anzahl_bewertung int,
-  erfasst_am date,
+  erfasst_am TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   kategorie_id int unsigned not null,
   benutzer_id int unsigned not null,
   PRIMARY KEY  (id)
