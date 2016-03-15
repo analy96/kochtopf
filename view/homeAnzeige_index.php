@@ -24,9 +24,7 @@
             <a id="auswahl-button" href="#popup" id="kommentieren-button-homeAnzeige" type="button" class="btn btn-success">Kommentieren</a>
             <a id="auswahl-button" href="#popup2" id="bewerten-button" type="button" class="btn btn-success">Bewerten</a>
             <div id="kommentar-inhalt-homeAnzeige" class="container">
-            </br>
-            </br>
-            </br>
+            
                 <h3>Kommentare</h3>
                 <?php foreach ($rezept as $kommentare): ?>
                     <p id="kommentar-text"><?=$kommentare->kommentar; ?></p>

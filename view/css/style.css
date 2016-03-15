@@ -19,6 +19,7 @@
     overflow: hidden;
     background: white;
     border-radius: 25px;
+    opacity: 0.93;
 
 }
 #navigation{
@@ -41,6 +42,8 @@
 #aussen-zelle{
     height: 140px;
     padding: 0;
+    border: solid 1px gray;
+    border-radius: 10px;
 }
 #innere-zelle{
     height: 100px;
@@ -67,17 +70,22 @@
 
 #inhalt-homeAnzeige{
    overflow: hidden;
+
 }
+
 #head-inhalt-homeAnzeige{
     float: left;
+       border-bottom: solid 1px gray;
 }
 #body-inhalt-homeAnzeige{
     height: 90%;
     overflow: auto;
+       border-bottom: solid 1px gray;
 }
 #kommentar-inhalt-homeAnzeige{
     overflow-y: scroll;
-    height: 50%;;
+    height: 50%;
+       border-top: solid 1px gray;
 }
 
 .overlay {

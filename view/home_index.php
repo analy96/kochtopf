@@ -11,7 +11,7 @@
     <select name="k" id="dropdown-liste" class="form-control" onchange="this.form.submit()">
     <option selected="selected"></option>
         <?php foreach ($kategorien as $kategorie): ?>
-        <option <?php echo ($_GET['k'] ==  $kategorie->kategorie) ? 'selected' : '' ;?>><?= $kategorie->kategorie;?></option>
+        <option <?php echo (isset($_GET['k'])) ? ($_GET['k'] ==  $kategorie->kategorie) ? 'selected' : '' : '';?>><?= $kategorie->kategorie;?></option>
         <?php endforeach ?>
     </select>
     </select>

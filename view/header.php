@@ -21,12 +21,8 @@
                 <li>
                     <a href="/user/logout">
                         <span class="glyphicon glyphicon-remove-circle"></span>
-                        
+
                     </a>
                 </li>
             </ul>
             </div>
-                
-                
-                
-                

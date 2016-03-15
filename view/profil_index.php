@@ -32,7 +32,7 @@
                         <TEXTAREA name="text" COLS=40 ROWS=6 style="margin: 0px; height: 520px; width: 793px;">
                             <?=$rezept->rezept;?>
                         </TEXTAREA>
-                        <P><INPUT type="hidden" name="id" value="<?=$rezept->id;?>">
+                        <INPUT type="hidden" name="id" value="<?=$rezept->id;?>">
                         <INPUT TYPE="submit" VALUE="Speichern" class="btn btn-success">
                     </FORM>
 	            </div>
