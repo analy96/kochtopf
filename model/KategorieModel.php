@@ -49,7 +49,23 @@ class KategorieModel extends Model
 
         return $rows;
      }
-    
+
+     public function readKategorieByKategorie($kategorie){
+       $query = "SELECT id FROM kategorie where kategorie = ?";
+
+       $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('s',$kategorie);
+
+      if (!$statement->execute()) {
+          throw new Exception($statement->error);
+      }
+      $result = $statement->get_result();
+      // Datensätze aus dem Resultat holen und in das Array $rows speichern
+      $row = $result->fetch_object();
+
+      return $row;
+     }
+
     public function readByUsername($benutzername){
     	// Query erstellen
         $query = "SELECT titel,beschreibung FROM `rezept` WHERE 1";

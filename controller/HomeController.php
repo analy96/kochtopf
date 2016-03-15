@@ -19,6 +19,18 @@ class HomeController
           $where = " where titel like '%".$_GET['w']."%'";
         }
 
+        if(isset($_GET['k'])){
+          if($_GET['k'] == ""){
+            $where = "";
+          }else{
+            $kat = new KategorieModel();
+            $id = $kat->readKategorieByKategorie($_GET['k']);
+            $kategorieID = $id->id;
+            $where = " where kategorie_id = ".$kategorieID;
+          }
+
+        }
+
 
         if(isset($_GET['o'])){
           $order = $_GET['o'];

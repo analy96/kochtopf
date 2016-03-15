@@ -33,6 +33,7 @@ class RezeptModel extends Model
         // Query erstellen
         $query = "SELECT * FROM $this->tableName ".$where." ".$order." LIMIT 0, 100";
 
+
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->execute();
 
@@ -60,7 +61,7 @@ class RezeptModel extends Model
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
- $result = $statement->get_result();
+        $result = $statement->get_result();
         // Datensätze aus dem Resultat holen und in das Array $rows speichern
         $row = $result->fetch_object();
 
