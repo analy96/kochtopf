@@ -7,11 +7,14 @@
             </span>
     </div>
   </form>
-    <!--<select id="dropdown-liste" >
+  <form  action="/home/" method="get">
+    <select name="k" id="dropdown-liste" class="form-control" onchange="this.form.submit()">
+    <option></option>
         <?php foreach ($kategorien as $kategorie): ?>
-        <option value=<?= $kategorie->kategorie;?>><?= $kategorie->kategorie;?></option>
+        <option><?= $kategorie->kategorie;?></option>
         <?php endforeach ?>
-    </select>-->
+    </select>
+  </form>
 </div>
 <a href="/home/?o=b" id="kategorie-button" type="button" class="btn btn-success">Beliebteste</a>
 <a href="/home/?o=a" id="kategorie-button" type="button" class="btn btn-success">Älteste</a>
